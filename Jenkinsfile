@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // GitHub에서 소스 코드 체크아웃
-                    git credentialsId: 'github-token', url: 'https://github.com/hanjunnn/k8s-ci-cd.git'
+                    git credentialsId: 'github-token', url: 'https://github.com/hanjunnn/k8s-ci-cd.git', branch: 'main'
                 }
             }
         }
