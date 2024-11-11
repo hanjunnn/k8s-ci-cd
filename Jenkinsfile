@@ -4,7 +4,7 @@ pipeline {
     environment {
         // GitHub 인증 정보 (Jenkins에 저장된 자격 증명 ID 사용)
         GITHUB_CREDENTIALS = credentials('github-token')
-        DOCKER_CREDENTIALS = credentials('dockerhub-credentials')
+        DOCKER_CREDENTIALS = credentials('docker-hub-credentials')
         DOCKER_IMAGE = 'hanjunn/hanjun-site:latest'
     }
     
