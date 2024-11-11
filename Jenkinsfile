@@ -18,13 +18,13 @@ pipeline {
             }
         }
         
-        stage('Build Docker Image') {
+        stage('Build Podman Image') {
             steps {
                 script {
-                    // Docker 빌드: docker 폴더 내의 Dockerfile 사용
+                    // Podman 빌드: docker 폴더 내의 Dockerfile 사용
                     // 'docker' 폴더로 이동하여 빌드
                     dir('docker') {
-                        docker.build("${DOCKER_IMAGE}")
+                        sh "podman build -t ${DOCKER_IMAGE} ."
                     }
                 }
             }
@@ -34,9 +34,12 @@ pipeline {
             steps {
                 script {
                     // Docker Hub에 로그인
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
-                        // Docker 이미지를 Docker Hub에 푸시
-                        docker.image("${DOCKER_IMAGE}").push()
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        // Podman을 사용하여 Docker Hub에 로그인
+                        sh "podman login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+                        
+                        // Podman 이미지를 Docker Hub에 푸시
+                        sh "podman push ${DOCKER_IMAGE}"
                     }
                 }
             }
