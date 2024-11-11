@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: hanjun-site-clusterissuer
+  namespace: cert-manager
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: qwedfr79@naver.com
+    privateKeySecretRef:
+      name: hanjun-ssl-key
+    solvers:
+      - dns01:
+          cloudflare:
+            email: qwedfr79@naver.com
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token

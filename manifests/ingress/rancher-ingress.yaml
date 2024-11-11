@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rancher-ingress
+  namespace: cattle-system
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "hanjun-site-clusterissuer"
+spec:
+  ingressClassName: hanjun-ingress
+  rules:
+    - host: rancher.hanjun.site
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: rancher
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - rancher.hanjun.site
+      secretName: hanjun-site-tls

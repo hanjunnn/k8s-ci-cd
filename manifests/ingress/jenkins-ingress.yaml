@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jenkins-ingress
+  namespace: jenkins  # 젠킨스가 설치된 네임스페이스로 설정
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"  # HTTP -> HTTPS 리디렉션
+    cert-manager.io/cluster-issuer: "hanjun-site-clusterissuer"  # 인증서 발급을 위한 ClusterIssuer
+spec:
+  ingressClassName: hanjun-ingress  # 사용할 Ingress 클래스
+  rules:
+    - host: jenkins.hanjun.site  # 젠킨스에 접속할 도메인
+      http:
+        paths:
+          - path: /  # 루트 경로
+            pathType: Prefix
+            backend:
+              service:
+                name: jenkins  # 젠킨스 서비스 이름 (Helm으로 설치한 기본 서비스명)
+                port:
+                  number: 8080  # 젠킨스 기본 포트
+  tls:
+    - hosts:
+        - jenkins.hanjun.site  # TLS 적용할 도메인
+      secretName: hanjun-site-tls  # TLS 인증서가 저장될 Secret 이름
+

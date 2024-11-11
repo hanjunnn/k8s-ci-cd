@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: hanjun-site-cert
+  namespace: cert-manager
+spec:
+  secretName: hanjun-site-tls
+  issuerRef:
+    name: hanjun-site-clusterissuer
+    kind: ClusterIssuer
+  commonName: hanjun.site
+  dnsNames:
+    - 'hanjun.site'
+    - '*.hanjun.site'
+  privateKey:
+    algorithm: RSA
+    size: 2048
