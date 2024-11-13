@@ -4,8 +4,6 @@ metadata:
   labels:
     some-label: pod
 spec:
-  nodeSelector:
-      docker: "true"
   containers:
     - name: docker
       image: docker:19.03
