@@ -23,17 +23,18 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                container('docker') { // docker 컨테이너를 사용
-                    dir('docker') {
-                        script {
-                            docker.build("${DOCKER_IMAGE}")
-                        }
-                    }
+stage('Build Docker Image') {
+    steps {
+        container('docker') { // docker 컨테이너를 사용
+            dir('.') { // 빌드 컨텍스트를 최상위 디렉토리로 변경
+                script {
+                    docker.build("${DOCKER_IMAGE}", "-f docker/Dockerfile .")
                 }
             }
         }
+    }
+}
+
 
         stage('Push to Docker Hub') {
             steps {
