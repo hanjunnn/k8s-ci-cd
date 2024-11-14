@@ -68,14 +68,17 @@ pipeline {
             steps {
                 container('jnlp') {
                     script {
-                        // 변경된 nginx-deployment.yaml 파일을 git에 커밋하고 푸시
-                        sh """
-                        git config --global user.email "qwedfr79@naver.com"
-                        git config --global user.name "hanjunnn"
-                        git add manifests/deployments/nginx-deployment.yaml
-                        git commit -m "Update nginx deployment image version to ${VERSION}"
-                        git push origin main
-                        """
+                        // GitHub 자격 증명 사용하여 푸시
+                        withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
+                            sh """
+                            git config --global user.email "qwedfr79@naver.com"
+                            git config --global user.name "hanjunnn"
+                            git remote set-url origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/hanjunnn/k8s-ci-cd.git
+                            git add manifests/deployments/nginx-deployment.yaml
+                            git commit -m "Update nginx deployment image version to ${VERSION}"
+                            git push origin main
+                            """
+                        }
                     }
                 }
             }
