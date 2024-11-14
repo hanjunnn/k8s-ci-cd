@@ -8,7 +8,10 @@ spec:
     - name: docker
       image: docker:19.03
       command:
-        - cat
+        - sh
+        - -c
+        - |
+          apt-get update && apt-get install -y git && cat
       tty: true
       securityContext:
         privileged: true

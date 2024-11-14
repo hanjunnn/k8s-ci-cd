@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            defaultContainer 'jnlp'
+            yamlFile 'agentpod.yaml'
+        }
+    }
 
     environment {
         GITHUB_CREDENTIALS = credentials('github-token')
