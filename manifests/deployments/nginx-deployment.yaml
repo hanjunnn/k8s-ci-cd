@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: hanjunn/hanjun-site:latest
+        image: hanjunn/hanjun-site:48
         ports:
         - containerPort: 80
