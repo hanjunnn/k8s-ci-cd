@@ -50,40 +50,41 @@ pipeline {
             }
         }
 
-stage('Update nginx-deployment.yaml') {
-    steps {
-        script {
-            def newImage = "${DOCKER_IMAGE}:${VERSION}"
-            // manifests/deployments 경로로 이동 후 수정
-            dir('manifests/deployments') {
-                sh """
-                # 정규식을 사용하여 image 라인에서 태그 부분만 교체
-                sed -i 's|image: hanjunn/hanjun-site:[^ ]*|image: ${newImage}|g' nginx-deployment.yaml
-                cat nginx-deployment.yaml  # 변경 사항 확인
-                """
+        stage('Update nginx-deployment.yaml') {
+            steps {
+                script {
+                    def newImage = "${DOCKER_IMAGE}:${VERSION}"
+                    // manifests/deployments 경로로 이동 후 수정
+                    dir('manifests/deployments') {
+                        sh """
+                        # 정규식을 사용하여 image 라인에서 태그 부분만 교체
+                        sed -i 's|image: hanjunn/hanjun-site:[^ ]*|image: ${newImage}|g' nginx-deployment.yaml
+                        cat nginx-deployment.yaml  # 변경 사항 확인
+                        """
+                    }
+                }
             }
         }
-    }
-}
 
-stage('Commit and Push nginx-deployment.yaml') {
-    steps {
-        container('jnlp') {
-            script {
-                withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
-                    sh """
-                    git config --global user.email "qwedfr79@naver.com"
-                    git config --global user.name "hanjunnn"
-                    git remote set-url origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/hanjunnn/k8s-ci-cd.git
-                    git add manifests/deployments/nginx-deployment.yaml
-                    git commit -m "Update nginx deployment image version to ${VERSION} [skip ci]"
-                    git push origin main
-                    """
+        stage('Commit and Push nginx-deployment.yaml') {
+            steps {
+                container('jnlp') {
+                    script {
+                        withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
+                            sh """
+                            git config --global user.email "qwedfr79@naver.com"
+                            git config --global user.name "hanjunnn"
+                            git remote set-url origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/hanjunnn/k8s-ci-cd.git
+                            git add manifests/deployments/nginx-deployment.yaml
+                            git commit -m "Update nginx deployment image version to ${VERSION} [skip ci]"
+                            git push origin main
+                            """
+                        }
+                    }
                 }
             }
         }
     }
-}
 
     post {
         success {
