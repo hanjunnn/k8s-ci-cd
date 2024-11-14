@@ -11,7 +11,7 @@ spec:
         - sh
         - -c
         - |
-          apt-get update && apt-get install -y git && cat
+          dnf update -y && dnf install -y git && cat
       tty: true
       securityContext:
         privileged: true
