@@ -50,17 +50,19 @@ pipeline {
             }
         }
 
-        stage('Update nginx-deployment.yaml') {
-            steps {
-                script {
-                    def newImage = "${DOCKER_IMAGE}:${VERSION}"
-                    // nginx-deployment.yaml 파일에서 image 태그를 새로운 이미지 버전으로 교체
-                    sh """
-                    sed -i 's|image: hanjunn/hanjun-site:latest|image: ${newImage}|g' /manifests/deployments/nginx-deployment.yaml
-                    """
-                }
+stage('Update nginx-deployment.yaml') {
+    steps {
+        script {
+            def newImage = "${DOCKER_IMAGE}:${VERSION}"
+            // manifests/deployments 경로로 이동 후 수정
+            dir('manifests/deployments') {
+                sh """
+                sed -i 's|image: hanjunn/hanjun-site:latest|image: ${newImage}|g' nginx-deployment.yaml
+                """
             }
         }
+    }
+}
 
         stage('Commit and Push nginx-deployment.yaml') {
             steps {
