@@ -66,27 +66,24 @@ stage('Update nginx-deployment.yaml') {
     }
 }
 
-
-        stage('Commit and Push nginx-deployment.yaml') {
-            steps {
-                container('jnlp') {
-                    script {
-                        // GitHub 자격 증명 사용하여 푸시
-                        withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
-                            sh """
-                            git config --global user.email "qwedfr79@naver.com"
-                            git config --global user.name "hanjunnn"
-                            git remote set-url origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/hanjunnn/k8s-ci-cd.git
-                            git add manifests/deployments/nginx-deployment.yaml
-                            git commit -m "Update nginx deployment image version to ${VERSION}"
-                            git push origin main
-                            """
-                        }
-                    }
+stage('Commit and Push nginx-deployment.yaml') {
+    steps {
+        container('jnlp') {
+            script {
+                withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
+                    sh """
+                    git config --global user.email "qwedfr79@naver.com"
+                    git config --global user.name "hanjunnn"
+                    git remote set-url origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/hanjunnn/k8s-ci-cd.git
+                    git add manifests/deployments/nginx-deployment.yaml
+                    git commit -m "Update nginx deployment image version to ${VERSION} [skip ci]"
+                    git push origin main
+                    """
                 }
             }
         }
     }
+}
 
     post {
         success {
