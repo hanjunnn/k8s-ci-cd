@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jenkins
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.jenkins.io
+    targetRevision: HEAD
+    chart: jenkins
+    helm:
+      valuesFiles:
+        - https://raw.githubusercontent.com/hanjunnn/k8s-ci-cd/main/manifests/values/jenkins-values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: jenkins
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

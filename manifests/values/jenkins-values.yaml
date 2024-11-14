@@ -9,9 +9,7 @@ controller:
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
 
-  env:
-    - name: JENKINS_URL
-      value: https://jenkins.hanjun.site  # Jenkins에 접근할 도메인 설정
+  jenkinsUrl: https://jenkins.hanjun.site
 
 persistence:
   existingClaim: jenkins-pvc  # 기존 PVC 사용
