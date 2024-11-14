@@ -11,5 +11,5 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: standard
   hostPath:
-    path: /mnt/data/jenkins
+    path: /var/jenkins_home
 

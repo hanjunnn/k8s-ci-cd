@@ -1,6 +1,17 @@
 controller:
-  securityContext:
-    runAsUser: 0  # 루트 사용자로 실행
+  runAsUser: 0
+  podSecurityContextOverride:
+    runAsUser: 0
+    runAsNonRoot: false
+  containerSecurityContext:
+    runAsUser: 0
+    runAsGroup: 0
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+
+  env:
+    - name: JENKINS_URL
+      value: https://jenkins.hanjun.site  # Jenkins에 접근할 도메인 설정
 
 persistence:
   existingClaim: jenkins-pvc  # 기존 PVC 사용
