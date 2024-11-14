@@ -50,36 +50,37 @@ pipeline {
             }
         }
 
-stage('Update nginx-deployment.yaml') {
-    steps {
-        script {
-            def newImage = "${DOCKER_IMAGE}:${VERSION}"
-            // manifests/deployments 경로로 이동 후 수정
-            dir('manifests/deployments') {
-                sh """
-                sed -i 's|image: hanjunn/hanjun-site:latest|image: ${newImage}|g' nginx-deployment.yaml
-                """
+        stage('Update nginx-deployment.yaml') {
+            steps {
+                script {
+                    def newImage = "${DOCKER_IMAGE}:${VERSION}"
+                    // manifests/deployments 경로로 이동 후 수정
+                    dir('manifests/deployments') {
+                        sh """
+                        sed -i 's|image: hanjunn/hanjun-site:latest|image: ${newImage}|g' nginx-deployment.yaml
+                        """
+                    }
+                }
             }
         }
-    }
-}
 
-stage('Commit and Push nginx-deployment.yaml') {
-    steps {
-        container('jnlp') {
-            script {
-                // 변경된 nginx-deployment.yaml 파일을 git에 커밋하고 푸시
-                sh """
-                git config --global user.email "qwedfr79@naver.com"
-                git config --global user.name "hanjunnn"
-                git add manifests/deployments/nginx-deployment.yaml
-                git commit -m "Update nginx deployment image version to ${VERSION}"
-                git push origin main
-                """
+        stage('Commit and Push nginx-deployment.yaml') {
+            steps {
+                container('jnlp') {
+                    script {
+                        // 변경된 nginx-deployment.yaml 파일을 git에 커밋하고 푸시
+                        sh """
+                        git config --global user.email "qwedfr79@naver.com"
+                        git config --global user.name "hanjunnn"
+                        git add manifests/deployments/nginx-deployment.yaml
+                        git commit -m "Update nginx deployment image version to ${VERSION}"
+                        git push origin main
+                        """
+                    }
+                }
             }
         }
     }
-}
 
     post {
         success {
