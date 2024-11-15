@@ -74,7 +74,7 @@ pipeline {
                             sh """
                             git config --global user.email "qwedfr79@naver.com"
                             git config --global user.name "hanjunnn"
-                            git remote set-url origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/hanjunnn/k8s-ci-cd.git
+                            git remote set-url origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/hanjunnn/k8s-manifests.git
                             git add manifests/deployments/nginx-deployment.yaml
                             git commit -m "Update nginx deployment image version to ${VERSION} [skip ci]"
                             git push origin main
