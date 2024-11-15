@@ -14,10 +14,11 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout k8s-ci-cd') {
             steps {
                 container('jnlp') {
                     script {
+                        // 'k8s-ci-cd' 리포지토리에서 프로젝트 코드 체크아웃
                         git credentialsId: 'github-token', url: 'https://github.com/hanjunnn/k8s-ci-cd.git', branch: 'main'
                     }
                 }
@@ -50,11 +51,22 @@ pipeline {
             }
         }
 
+        stage('Checkout k8s-manifests') {
+            steps {
+                container('jnlp') {
+                    script {
+                        // 'k8s-manifests' 리포지토리에서 매니페스트 코드 체크아웃
+                        git credentialsId: 'github-token', url: 'https://github.com/hanjunnn/k8s-manifests.git', branch: 'main'
+                    }
+                }
+            }
+        }
+
         stage('Update nginx-deployment.yaml') {
             steps {
                 script {
                     def newImage = "${DOCKER_IMAGE}:${VERSION}"
-                    // manifests/deployments 경로로 이동 후 수정
+                    // 'k8s-manifests/manifests/deployments' 경로로 이동하여 nginx-deployment.yaml 파일 수정
                     dir('manifests/deployments') {
                         sh """
                         # 정규식을 사용하여 image 라인에서 태그 부분만 교체
