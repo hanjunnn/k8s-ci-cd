@@ -1,12 +1,7 @@
 <!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
-		<title>Generic Page - Massively by HTML5 UP</title>
+		<title>Tech Stack</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -15,112 +10,145 @@
 	<body class="is-preload">
 
 		<!-- Wrapper -->
-			<div id="wrapper">
+		<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Massively</a>
+			<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="logo">Tech Stack</a>
+			</header>
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="index.html">Kubernetes & CI/CD</a></li>
+					<li class="active"><a href="generic.html">Tech Stack</a></li>
+					<li><a href="elements.html">Elements Reference</a></li>
+				</ul>
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</nav>
+
+			<!-- Main -->
+			<div id="main">
+
+				<!-- Post -->
+				<section class="post">
+					<header class="major">
+						<h1>Tech Stack</h1>
+						<p class="custom-font">이 프로젝트는 다양한 기술 스택을 활용하여 배포 및 관리되었습니다. 아래는 사용된 주요 기술들입니다.</p>
 					</header>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">This is Massively</a></li>
-							<li class="active"><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+					<!-- Tech Stack List -->
+					<div class="tech-stack">
+						<!-- Host OS & Virtualization -->
+						<div class="tech-item">
+							<h2>Host OS & Virtual Machine</h2>
+<p><strong>Host OS</strong>: Windows<br>프로젝트에서 호스트 운영 체제로 <strong>Windows OS</strong>를 사용하여 가상화 환경을 구축했습니다. Windows는 Hyper-V를 통해 가상 머신을 실행하는 데 적합한 환경을 제공합니다.</p>
 
-				<!-- Main -->
-					<div id="main">
+<p><strong>Virtual Machine</strong>: Hyper-V<br>Windows OS에서 <b>Hyper-V</b>를 사용하여 가상화 환경을 설정하고, 여러 가상 머신을 효율적으로 관리할 수 있었습니다. Hyper-V는 가상 머신을 실행하고 자원을 최적화하는 데 유용한 도구입니다.</p>
 
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h1>This is a<br />
-									Generic Page</h1>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
-								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sapien risus, commodo eget turpis at, elementum convallis enim turpis, lorem ipsum dolor sit amet nullam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus. Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum.</p>
-							</section>
+<p><strong>Master & Worker Nodes</strong>: Rocky Linux<br><b>Rocky Linux</b>는 프로젝트의 마스터 및 워커 노드 운영 체제로 사용되었습니다. 이 배포판은 안정성과 성능이 뛰어나 Kubernetes 클러스터 환경에서 최적의 성능을 발휘하며, 서버 및 클러스터 환경 운영에 적합합니다.</p>
 
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
 								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+						<!-- Kubernetes -->
+						<div class="tech-item">
+							<h2>Kubernetes</h2>
+							<p><strong>Kubernetes</strong>는 컨테이너화된 애플리케이션을 자동으로 배포하고 관리하는 오픈 소스 시스템입니다. 이 프로젝트에서는 <strong>RKE2</strong> (Rancher Kubernetes Engine 2)를 사용하여 Kubernetes 클러스터를 구축했습니다. RKE2는 안정성과 보안성을 강조한 Kubernetes의 경량화된 버전으로, 다양한 환경에서 쉽게 배포할 수 있습니다. 또한, <strong>Helm</strong>을 사용하여 애플리케이션을 Kubernetes 클러스터에 자동으로 배포하고 관리했습니다.</p>
+							<p><strong>Helm</strong>은 Kubernetes의 패키지 관리 도구로, 애플리케이션을 Chart라는 템플릿으로 정의하여 배포하고 관리할 수 있습니다. Helm을 통해 복잡한 설정을 간단하게 패키징하여 Kubernetes 클러스터에 배포할 수 있으며, 다양한 환경에 맞춰 구성 파일을 쉽게 수정할 수 있습니다. 이 프로젝트에서는 Helm을 활용해 여러 애플리케이션을 효율적으로 관리하고, 반복 가능한 배포를 실현했습니다.</p>
+						</div>
+
+						<!-- CI/CD Tools -->
+						<div class="tech-item">
+							<h2>CI/CD Tools</h2>
+							<ul>
+								<li><strong>Jenkins</strong>: CI/CD 파이프라인 자동화를 위한 Jenkins 사용. Jenkins는 애플리케이션 빌드, 테스트 및 배포를 자동화하여 개발자의 생산성을 높여줍니다.</li>
+								<li><strong>ArgoCD</strong>: GitOps 기반의 지속적인 배포 및 관리 도구. ArgoCD는 Git 저장소를 배포 소스로 사용하여 Kubernetes 클러스터에 애플리케이션을 배포하고 관리하는 데 도움을 줍니다. GitOps 접근 방식으로 인프라를 코드화하여 더 나은 배포와 버전 관리를 실현할 수 있습니다.</li>
+							</ul>
+						</div>
+
+						<!-- Application Services -->
+						<div class="tech-item">
+							<h2>Application Services</h2>
+							<ul>
+								<li><strong>Cert Manager</strong>: SSL 인증서를 자동으로 관리하고 발급하는 도구입니다. Cert Manager는 Kubernetes 클러스터 내에서 인증서를 생성하고 갱신하며, 애플리케이션의 보안을 강화합니다.</li>
+								<li><strong>Nginx</strong>: Nginx는 웹 서버이자 리버스 프록시 역할을 하는 소프트웨어로, 이 프로젝트에서는 Nginx를 사용하여 웹 트래픽을 관리하고, 애플리케이션에 대한 요청을 적절한 서비스로 라우팅했습니다.<br>Kubernetes 환경에서는 Nginx를 <strong>Ingress Controller</strong>로 사용하여 외부 트래픽을 내부 서비스로 라우팅하고, Ingress 리소스를 통해 다양한 도메인과 경로를 하나의 인프라에서 처리할 수 있습니다. 또한, SSL/TLS 인증서와 같은 보안 요소를 설정하여 클러스터 내에서 안전한 트래픽 관리가 가능합니다.</li>
+								<li><strong>Rancher</strong>: Kubernetes 클러스터 관리 및 오케스트레이션 도구입니다. Rancher는 여러 Kubernetes 클러스터를 중앙에서 관리할 수 있도록 하여, Kubernetes 환경을 보다 쉽게 관리하고 모니터링할 수 있도록 도와줍니다.</li>
+							</ul>
+							
+						</div>
 					</div>
+
+					<!-- Image -->
+					<!-- <div class="image main"><img src="images/pic01.jpg" alt="" /></div> -->
+
+					<!-- Details -->
+					<p>이 기술 스택들을 사용하여 로컬 VM 환경에서 Kubernetes 클러스터를 구축하고, 다양한 DevOps 툴을 통해 CI/CD 파이프라인을 자동화하며, Kubernetes 환경에서 애플리케이션을 안정적으로 배포하고 관리할 수 있었습니다. 이러한 기술들은 효율적인 배포와 안정적인 운영을 가능하게 만들어, 프로젝트의 성공적인 진행에 큰 기여를 했습니다.</p>
+				</section>
 
 			</div>
 
+			<!-- Footer -->
+			<footer id="footer">
+				<section>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" />
+							</div>
+							<div class="field">
+								<label for="email">Email</label>
+								<input type="text" name="email" id="email" />
+							</div>
+							<div class="field">
+								<label for="message">Message</label>
+								<textarea name="message" id="message" rows="3"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send Message" /></li>
+						</ul>
+					</form>
+				</section>
+				<section class="split contact">
+					<section class="alt">
+						<h3>Address</h3>
+						<p>1234 Somewhere Road #87257<br />
+						Nashville, TN 00000-0000</p>
+					</section>
+					<section>
+						<h3>Phone</h3>
+						<p><a href="#">(000) 000-0000</a></p>
+					</section>
+					<section>
+						<h3>Email</h3>
+						<p><a href="#">info@untitled.tld</a></p>
+					</section>
+					<section>
+						<h3>Social</h3>
+						<ul class="icons alt">
+							<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</section>
+				</section>
+			</footer>
+
+		</div>
+
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>

@@ -28,14 +28,14 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">My Kubernetes Site</a>
+						<a href="index.html" class="logo">HANJUN Site</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">My Kubernetes Site</a></li>
-							<li><a href="generic.html">Generic Page</a></li>
+							<li class="active"><a href="index.html">Kubernetes & CI/CD</a></li>
+							<li><a href="generic.html">Tech Stack</a></li>
 							<li><a href="elements.html">Elements Reference</a></li>
 						</ul>
 						<ul class="icons">
@@ -55,16 +55,18 @@
 								<span class="date">November 18, 2024</span>
 								<h2>What's Kubernetes?</h2>
 								<p class="custom-font">
-									쿠버네티스(Kubernetes)는 컨테이너화된 애플리케이션의 배포, 확장 및 관리 자동화를 돕는 오픈소스 시스템입니다. 클러스터 환경에서 애플리케이션을 안정적으로 운영할 수 있도록 도와주며, 고가용성 및 자동화된 배포를 지원합니다.
+									쿠버네티스(Kubernetes)는 컨테이너화된 애플리케이션의 배포, 확장, 관리 자동화를 돕는 오픈소스 시스템입니다.<br>
+									클러스터 환경에서 애플리케이션을 안정적으로 운영할 수 있도록 지원하며, 고가용성 및 자동화된 배포 기능을 제공합니다.
 								</p>
 								<br>
 								<p class="custom-font">
 									이 사이트는 쿠버네티스를 통해 배포되었으며, 로컬PC에 VM 환경을 구축하여 쿠버네티스를 배포하고 프로젝트를 구현했습니다.<br>
-									실습 과정에서는 Nginx를 웹서버로 사용하고, Nginx Ingress를 활용해 외부 트래픽을 관리하며,<br>
-									Rancher를 사용해 쿠버네티스 클러스터를 관리했습니다.<br>
-									또한, GitHub, Docker Hub, Jenkins, ArgoCD와 같은 다양한 도구들을 통합하여<br>
+									실습 과정에서는 Nginx를 웹서버로 사용하고, Nginx Ingress를 활용해 외부 트래픽을 관리했습니다.<br>
+									또한, Rancher를 사용해 쿠버네티스 클러스터를 관리하고, GitHub, Docker Hub, Jenkins, ArgoCD와 같은 다양한 도구들을 통합하여<br>
 									자동화된 CI/CD 파이프라인을 구축하고, 애플리케이션의 지속적인 통합 및 배포를 구현했습니다.
-								</p>								
+								</p>
+								
+														
 
 							</header>
 							<img src="images/CI-CD.png" alt="Kubernetes CI/CD Setup" style="max-width: 100%; height: auto;" />
@@ -84,7 +86,9 @@
 										<h2><a href="#">Nginx<br /></a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									<p>Nginx는 고성능 웹 서버이자 리버스 프록시 서버로, 주로 HTTP와 HTTPS 트래픽을 처리합니다. 또한, 로드 밸런싱과 캐싱 기능을 제공하며, 고용량의 웹 애플리케이션을 안정적으로 지원하는 데 사용됩니다.</p>
+									<p>
+										Nginx는 고성능 웹 서버이자 리버스 프록시 서버로, 쿠버네티스 환경에서 Nginx를 웹서버로 활용하며, Nginx Ingress를 사용해 외부 트래픽을 클러스터 내의 적절한 서비스로 효율적으로 분배합니다. 이를 통해 고가용성 및 확장성 있는 서비스를 제공합니다.
+									</p>
 									<!-- <ul class="actions special">
 										<li><a href="#" class="button">Full Story</a></li>
 									</ul> -->
