@@ -1,13 +1,13 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900");
 @font-face {
-    font-family: 'Gyeonggi_Batang_Regular';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
-    font-weight: 400;
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 500;
     font-style: normal;
 }
-p.custom-font {
-    font-family: 'Gyeonggi_Batang_Regular', serif  !important; /* serif는 폰트가 없을 때 대비 */
+.custom-font {
+    font-family: 'Pretendard-Regular', serif  !important; /* serif는 폰트가 없을 때 대비 */
 }
 
 /*
